@@ -1,1 +1,1 @@
-.site-header{padding:10px;display:flex}.site-header nav{background-color:#000}
+.site-header{padding:10px;display:flex;align-items:center;gap:50px;margin:50px 0}.site-header .logo{width:100px}.site-header nav{display:flex}.site-header nav ul{display:flex}.site-header nav ul li a{font-weight:600;color:#000;border-radius:10px;padding:8px 18px}.site-header nav ul li a:hover{background-color:#00dc90;color:#fff}.breadcrumb{color:#9b9b9b;font-size:15px}

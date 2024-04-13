@@ -1,9 +1,40 @@
+// colors
+$cor_primaria: #00dc90;
 
 .site-header {
   padding: 10px;
-  display: flex; 
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin: 50px 0;
+
+  .logo {
+    width: 100px;
+  }
 
   nav {
-    background-color: black;
+    display: flex;
+
+    ul {
+      display: flex;
+      li {
+        a {
+          font-weight: 600;
+          color: black;
+          border-radius: 10px;
+          padding: 8px 18px;
+
+          &:hover {
+            background-color: $cor_primaria;
+            color: white;
+          }
+        }
+      }
+    }
   }
+}
+
+.breadcrumb {
+  color: #9b9b9b;
+  font-size: 15px;
 }
