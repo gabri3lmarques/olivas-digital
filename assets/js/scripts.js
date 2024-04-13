@@ -1,0 +1,1 @@
+const code=!0;let text;code&&(text="tem código js");
