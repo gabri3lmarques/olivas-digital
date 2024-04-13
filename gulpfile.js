@@ -5,10 +5,9 @@ const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 
 gulp.task('sass', function() {
-  return gulp.src('dev/sass/styles.scss')
-    .pipe(sass())
+  return gulp.src('dev/sass/*.scss')
+    .pipe(sass().on('error', sass.logError))
     .pipe(cleanCSS())
-    .pipe(concat('styles.css'))
     .pipe(gulp.dest('assets/css'));
 });
 
@@ -17,4 +16,9 @@ gulp.task('js', function() {
     .pipe(concat('scripts.js'))
     .pipe(uglify())
     .pipe(gulp.dest('assets/js'));
+});
+
+gulp.task('watch', function() {
+  gulp.watch('dev/sass/*.scss', gulp.series('sass'));
+  gulp.watch('dev/js/*.js', gulp.series('js'));
 });

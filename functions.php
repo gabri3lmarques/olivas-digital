@@ -1,7 +1,10 @@
 <?php
 
 function theme_enqueue_styles() {
-    wp_enqueue_style( 'my-style', get_template_directory_uri() . '/assets/css/styles.css' );
+    wp_enqueue_style( 'styles', get_template_directory_uri() . '/assets/css/styles.css' );
+    wp_enqueue_style( 'googleapis', '//fonts.googleapis.com', array(), '1.0', 'all' );
+    wp_enqueue_style( 'gstatic', '//fonts.gstatic.com', array(), '1.0', 'all' );
+    wp_enqueue_style( 'fonts', '//fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap', array(), '1.0', 'all' );
 }
 
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
