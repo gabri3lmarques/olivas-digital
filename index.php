@@ -60,4 +60,3 @@ get_footer();
 
 ?>
 
-<p><a href="<?php echo esc_url( get_post_type_archive_link( 'projetos' ) ); ?>">Link para os Arquivos de Posts</a></p>

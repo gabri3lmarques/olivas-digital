@@ -32,9 +32,145 @@ $cor_primaria: #00dc90;
       }
     }
   }
+
+  .open-menu {
+    width: 33px;
+    cursor: pointer;
+    display: none;
+  }
 }
 
 .breadcrumb {
   color: #9b9b9b;
   font-size: 15px;
+}
+
+.rotating {
+  animation: girar 1s forwards;
+}
+
+@keyframes girar {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .site-header {
+    justify-content: space-between;
+    
+    nav {
+      display: none;
+    }
+    .open-menu {
+      display: inline-block;
+    }
+  }
+
+}
+
+.site-overlay {
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: #00dc90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 300ms;
+  pointer-events: none;
+}
+
+.site-overlay.active {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.site-overlay__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-overlay__content__background {
+  background-color: #fff;
+  width: 90vw;
+  height: auto;
+  padding: 10px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.site-overlay__content__border__top {
+  width: 0;
+  height: 0;
+  border-left: 0px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #000;
+}
+
+.site-overlay__content__border__body {
+  background-color: #000;
+  width: 15px;
+  height: 100%;
+}
+
+.site-overlay__wrapper {
+  display: flex;
+}
+
+.site-overlay__bottom {
+  display: flex;
+}
+
+.site-overlay__bottom__left-border {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 0 solid transparent;
+  border-top: 15px solid #000;
+}
+
+.site-overlay__bottom__right-border {
+  height: 15px;
+  background-color: #000;
+  width: 100%;
+}
+
+.close-menu {
+  width: 33px;
+  cursor: pointer;
+}
+
+.site-overlay__content__header {
+  text-align: right;
+}
+
+.mobile-menu-picture {
+  text-align: center;
+
+  img {
+    border-radius: 50%;
+    width: 200px;
+  }
+
+}
+
+.mobile-menu {
+  margin-top: 40px;
+  text-align: center;
+
+  ul {
+    li {
+      a {
+        color: #000;
+        font-weight: 600;
+      }
+    }
+  }
 }

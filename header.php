@@ -6,40 +6,32 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<?php 
-    $home_url = esc_url( home_url() );
-?>
 <div class="container">
     <header class="site-header">
         <div class="logo">
-            <a href="<?php echo $home_url; ?>"><img src="<?php echo get_template_directory_uri() . "/assets/images/template/logo-svg.svg" ?>"></a>
+            <a href="<?php echo esc_url( home_url() ); ?>"><img src="<?php echo get_template_directory_uri() . "/assets/images/template/logo-svg.svg" ?>"></a>
         </div>
         <nav>
             <ul>
-                <li><a href="<?php echo $home_url; ?>">Home</a></li>
-                <li><a href="/projetos">Projetos</a></li>
-                <li><a href="/contato">Contato</a></li>
-                <li><a href="/docs">Docs</a></li>
+                <li><a href="<?php echo esc_url( home_url() ); ?>"><?php _e('Home', 'textdomain'); ?></a></li>
+                <li><a href="<?php echo esc_url( home_url('/projetos') ); ?>"><?php _e('Projetos', 'textdomain'); ?></a></li>
+                <li><a href="<?php echo esc_url( home_url('/contato') ); ?>"><?php _e('Contato', 'textdomain'); ?></a></li>
+                <li><a href="<?php echo esc_url( home_url('/docs') ); ?>"><?php _e('Docs', 'textdomain'); ?></a></li>
+                <li><a href="<?php echo esc_url( home_url('/home-teste') ); ?>"><?php _e('Home teste', 'textdomain'); ?></a></li>
             </ul>
         </nav>
+        <img class="open-menu" src="<?php echo get_template_directory_uri() . "/assets/images/template/icon-open.svg" ?>">
     </header>
     <p class="breadcrumb">
         <?php 
-
-            $current_page_permalink = get_permalink();
-            $parsed_url = parse_url( $current_page_permalink );
-            $path_parts = explode( '/', $parsed_url['path'] );
-            $slug = $path_parts[1]; 
-            $capital_slug = ucfirst( $slug );
-
-            $blog_name = get_bloginfo( 'name' );
-
             if (is_home()) {
-                echo "Home - <em>$blog_name</em>";
+                echo __("Home", "textdomain") . " - <em>" . get_bloginfo('name') . "</em>";
             } else {
-                echo "$capital_slug - <em>$blog_name</em>";
+                $current_slug = ucfirst( get_query_var('pagename') );
+                echo "$current_slug - <em>" . get_bloginfo('name') . "</em>";
             }
-            
         ?>
     </p>
 </div>
+
+
