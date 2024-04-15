@@ -6,9 +6,80 @@
 
     aside {
         width: 350px;
+
+        .tipo-link {
+            border-radius: 8px;
+            filter: drop-shadow(0 0 4px rgba(226,230,245,0.8));
+            background-color: #ffffff;
+            padding: 4px 8px;
+            border: 1px solid black;
+            color: black;
+            margin-right: 4px;
+
+            &:hover {
+                border: 1px solid #00dc90;
+                color: #00dc90;
+            }
+
+        }
     }
 
     main {
         flex: 1;
+
+        .projeto {
+
+            margin-bottom: 60px;
+
+            .title-link {
+                color: black;
+                font-size: 36px;
+
+                &:hover {
+                    color:#00dc90;
+                }
+
+
+                h3 {
+                    font-size: 36px;
+                }
+            }
+
+            .tipos {
+
+                div {
+                    border-radius: 8px;
+                    filter: drop-shadow(0 0 4px rgba(226,230,245,0.8));
+                    background-color: #ffffff;
+                    padding: 4px 8px;
+                    border: 1px solid black;
+                    color: black;
+                    margin-right: 4px;
+                }
+                display: flex;
+                .tipo-tag {
+                    width: 12px;
+                }
+            }
+
+            .imagem__projeto {
+                border-radius: 8px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .projetos-page {
+        flex-direction: column;
+
+        aside {
+            width: auto;
+            order: 1;
+        }
+
+        main {
+            order: 2;
+        }
     }
 }

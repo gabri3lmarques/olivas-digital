@@ -1,10 +1,11 @@
 <?php 
 
+echo "<p>Filtre por tipo de projeto</p>";
+
 $terms = get_terms( array(
     'taxonomy' => 'tipo',
     'hide_empty' => false, 
 ) );
-
 
 if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
     foreach ( $terms as $term ) {

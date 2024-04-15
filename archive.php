@@ -9,32 +9,44 @@ get_header();
     </aside>
     <main>
         <?php 
-        if ( have_posts() ) :
-            while ( have_posts() ) : the_post();
-            $imagem = get_field('imagem');
+            if ( have_posts() ) :
+                while ( have_posts() ) : the_post();
 
-            if ( $imagem ) {
+                echo "<div class=\"projeto\">";
+                
+                $title = get_the_title();
+                $link = get_the_permalink();
+                $imagem = get_field('imagem');
 
-                $url = $imagem[ "url" ];
+                if ( $imagem ) {
 
-                echo "<img src=\"$url\">";
+                    $url = $imagem[ "url" ];
 
-            }
+                    echo "<a href=\"$link\"><img class=\"imagem__projeto\" src=\"$url\" alt=\"Lorem ipsum dolor sit\"></a>";
+
+                }
         
-                the_title('<h2>', '</h2>'); 
+                echo "<a class=\"title-link\" href=\"$link\"><h3>$title</h3></a>";
 
                $excerpt = get_the_excerpt(); 
                echo "<p>$excerpt </p>";
-        
-                       $tipos = get_the_terms( get_the_ID(), 'tipo' );
 
-                       if( $tipos && ! is_wp_error( $tipos ) ) {
+                                   // Obtém os termos da taxonomia 'tipo' associados ao post
+                                   $tipos = get_the_terms( get_the_ID(), 'tipo' );
+        
+                    // Verifica se há termos
+                    if( $tipos && ! is_wp_error( $tipos ) ) {
+
+                        echo "<div class=\"tipos\">";
+
+                        foreach ( $tipos as $tipo ) {
+                            echo '<div class="tipo"><img class="tipo-tag" src="' . get_template_directory_uri() . '/assets/images/template/tag.svg">' . esc_html( $tipo->name ) . '</div>';
+                        }
+
+                        echo "</div>";
             
-                           foreach ( $tipos as $tipo ) {
-                               echo '<p>' . esc_html( $tipo->name ) . '</p>';
-                           }
-                
-                       }
+                    }
+                echo "</div>";
             endwhile;
         else :
             echo '<p>Nenhuma postagem encontrada.</p>';

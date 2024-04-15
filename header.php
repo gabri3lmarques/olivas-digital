@@ -17,7 +17,6 @@
                 <li><a href="<?php echo esc_url( home_url('/projetos') ); ?>"><?php _e('Projetos', 'textdomain'); ?></a></li>
                 <li><a href="<?php echo esc_url( home_url('/contato') ); ?>"><?php _e('Contato', 'textdomain'); ?></a></li>
                 <li><a href="<?php echo esc_url( home_url('/docs') ); ?>"><?php _e('Docs', 'textdomain'); ?></a></li>
-                <li><a href="<?php echo esc_url( home_url('/home-teste') ); ?>"><?php _e('Home teste', 'textdomain'); ?></a></li>
             </ul>
         </nav>
         <img class="open-menu" src="<?php echo get_template_directory_uri() . "/assets/images/template/icon-open.svg" ?>">
