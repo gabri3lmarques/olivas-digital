@@ -12,6 +12,7 @@ function theme_enqueue_styles() {
     wp_enqueue_style( 'home', get_template_directory_uri() . '/assets/css/home.css' );
     wp_enqueue_style( 'archive', get_template_directory_uri() . '/assets/css/archive.css' );
     wp_enqueue_style( 'contato', get_template_directory_uri() . '/assets/css/page-contato.css' );
+    wp_enqueue_style( 'single', get_template_directory_uri() . '/assets/css/single.css' );
 }
 
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
