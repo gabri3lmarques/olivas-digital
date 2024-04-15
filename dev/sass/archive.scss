@@ -1,2 +1,14 @@
 
 
+.projetos-page {
+    display: flex;
+    gap: 20px;
+
+    aside {
+        width: 350px;
+    }
+
+    main {
+        flex: 1;
+    }
+}

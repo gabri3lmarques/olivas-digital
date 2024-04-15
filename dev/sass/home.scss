@@ -1,0 +1,110 @@
+.home-page {
+    display: flex;
+    gap: 20px;
+
+    main {
+        flex: 1;
+
+        .round-container {
+            text-align: center;
+                .site-name {
+                    text-transform: uppercase;
+                    font-size: 18px;
+                    color: black;
+                    margin-top: 20px;
+                }
+
+                .site-intro {
+                    color: #4a4a4a
+                }
+
+                .brand-image {
+                    
+                    img {
+                        width: 80px;
+                        border-radius: 50%;
+                    }
+                }
+        }
+
+        .posts-home {
+            .projeto {
+                &:first-child {
+                    margin-top: 20px;
+                }
+                margin-bottom: 80px;
+                img {
+                    border-radius: 8px;
+                    filter: drop-shadow(0 0 4px rgba(0,0,0,0.08));
+                }
+                h2 {
+                    a {
+                        font-size: 36px;
+                        color: #000;
+
+                        &:hover {
+                            color: #00dc90;
+                        }
+                    }
+                }
+
+                .tipos {
+                    display: flex;
+                    gap: 4px;
+                    margin-top: 10px;
+
+                    .tipo {
+                        border-radius: 8px;
+                        filter: drop-shadow(0 0 4px rgba(226,230,245,0.8));
+                        background-color: #ffffff;
+                        padding: 4px 8px;
+
+                        .tipo-tag {
+                            width: 14px;
+                            margin-right: 4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    aside {
+        width: 350px;
+
+        div {
+            .search-form {
+                display: flex;
+                justify-content: space-between;
+
+                label {
+                    input[type="search"] {
+                        border:0;
+                        outline: 0;
+                    }   
+                }
+
+                img {
+                    width: 24px;
+                }
+            }
+        }
+
+
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .home-page {
+        flex-direction: column;
+
+        aside {
+            width: auto;
+            order: 1;
+        }
+
+        main {
+            order: 2;
+        }
+    }
+}

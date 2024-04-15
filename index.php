@@ -1,62 +1,87 @@
-<?php 
+<?php get_header(); ?>
+<section class="home-page container">
+    <main>
+        <div class="round-container">
+            <div class="brand-image">
+                <img src="<?php echo get_template_directory_uri() . "/assets/images/template/olivas.png" ?>" alt="">
+            </div>
+            <h3 class="site-name"><?php echo get_bloginfo('name') ?></h3>
+            <p class="site-intro">Lorem ipsum dolor sit amet, <br>consectetur adipiscing elit. </p>
+            <div class="social">
+                <a href="#"><img src="<?php echo get_template_directory_uri() . "/assets/images/template/footer-facebook.svg" ?>" alt="" ></a>
+                <a href="#"><img src="<?php echo get_template_directory_uri() . "/assets/images/template/footer-instagram.svg" ?>" alt=""></a>
+                <a href="#"><img src="<?php echo get_template_directory_uri() . "/assets/images/template/footer-pinterest.svg" ?>" alt=""></a>
+                <a href="#"><img src="<?php echo get_template_directory_uri() . "/assets/images/template/footer-twitter.svg" ?>" alt=""></a>
+            </div>
+        </div>
+        <div class="posts-home">
+        <?php 
+            // Definir o tipo de post
+            $post_type = 'projetos';
 
-get_header();
+            // Criar a consulta
+            $query = new WP_Query( array(
+                'post_type' => $post_type,
+                'order' => 'ASC',
+                'posts_per_page' => -1,
+            ) );
 
-get_search_form(); 
+            // Loop pelos posts
+            if ( $query->have_posts() ) :
 
-// Definir o tipo de post
-$post_type = 'projetos';
+                while ( $query->have_posts() ) : $query->the_post();
 
-// Criar a consulta
-$query = new WP_Query( array(
-    'post_type' => $post_type,
-    'order' => 'ASC',
-    'posts_per_page' => -1,
-) );
+                    echo "<article class=\"projeto\">";
 
-// Loop pelos posts
-if ( $query->have_posts() ) :
+                    $imagem = get_field('imagem');
 
-    while ( $query->have_posts() ) : $query->the_post();
+                    if ( $imagem ) {
 
-        $imagem = get_field('imagem');
+                        $url = $imagem[ "url" ];
 
-        if ( $imagem ) {
+                        echo "<img src=\"$url\" alt=\"Lorem ipsum dolor sit.\">";
 
-            $url = $imagem[ "url" ];
+                    }
 
-            echo "<img src=\"$url\">";
+                    $permalink = get_permalink();
 
-        }
+                    // Exibir o título do post
+                    $title = get_the_title();
 
-        $permalink = get_permalink();
+                    echo "<h2><a href=\"$permalink\">$title</a></h2>";
 
-        // Exibir o título do post
-        $title = get_the_title();
+                    // Obtém os termos da taxonomia 'tipo' associados ao post
+                    $tipos = get_the_terms( get_the_ID(), 'tipo' );
 
-        echo "<h1><a href=\"$permalink\">$title</a></h1>";
+                    // Verifica se há termos
+                    if( $tipos && ! is_wp_error( $tipos ) ) {
 
-        // Obtém os termos da taxonomia 'tipo' associados ao post
-        $tipos = get_the_terms( get_the_ID(), 'tipo' );
+                        echo "<div class=\"tipos\">";
 
-        // Verifica se há termos
-        if( $tipos && ! is_wp_error( $tipos ) ) {
+                        foreach ( $tipos as $tipo ) {
+                            echo '<div class="tipo"><img class="tipo-tag" src="' . get_template_directory_uri() . '/assets/images/template/tag.svg">' . esc_html( $tipo->name ) . '</div>';
+                        }
 
-            foreach ( $tipos as $tipo ) {
-                echo '<p>' . esc_html( $tipo->name ) . '</p>';
-            }
- 
-        }
+                        echo "</div>";
+            
+                    }
 
-        // Exibir o conteúdo do post
-        $excerpt = get_the_excerpt(); 
-        echo "<p>$excerpt </p>";
+                    // Exibir o conteúdo do post
+                    $excerpt = get_the_excerpt(); 
+                    echo "<p>$excerpt </p>";
 
-    endwhile;
+                    echo "</article>";
 
-endif;
+                endwhile;
 
-get_footer();
-
-?>
-
+            endif;
+        ?>
+        </div>
+    </main>
+    <aside>
+        <div class="round-container">
+            <?php get_search_form();  ?>
+        </div>
+    </aside>
+</section>
+<?php get_footer(); ?>
