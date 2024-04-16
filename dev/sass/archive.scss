@@ -6,6 +6,10 @@
 
     aside {
         width: 350px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        align-self: baseline;
 
         .tipo-link {
             border-radius: 8px;

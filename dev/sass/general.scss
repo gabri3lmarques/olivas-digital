@@ -72,3 +72,23 @@ body {
   padding: 40px 20px;
 }
 
+.docs-page {
+  h2 {
+    font-size: 35px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+  }
+}
+
+pre {
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 10px;
+  border-radius: 4px;
+  color: #333;
+}
+
+pre, code {
+  font-family: 'Courier New', Courier, monospace;
+}
+

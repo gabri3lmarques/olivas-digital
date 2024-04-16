@@ -19,11 +19,15 @@ if(!empty($_POST)) {
     }
 }
 
-echo do_shortcode('[contact-form-7 id="8fea212" title="Sem título"]');
+// Verifica se o shortcode do Contact Form 7 existe
+if (shortcode_exists('contact-form-7')) {
+    echo do_shortcode('[contact-form-7 id="8fea212" title="Sem título"]');
+} else {
+    echo "<p>O shortcode do formulário de contato não está disponível.</p>";
+}
 
 echo "</section>";
 
 get_footer();
 
 ?>
-
